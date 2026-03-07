@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "contracts")
+@Table(name = "vw_sw_all_motos_semanal")
 public class Contract {
 
     @Id
@@ -37,17 +38,5 @@ public class Contract {
 
     private String stateWeek;
 
-    public Contract(ContractDto dto) {
-        this.id = dto.id();
-        this.nameClient = dto.nameClient();
-        this.phoneNumber = dto.phoneNumber();
-        this.payDay = dto.payDay();
-        this.payment = dto.payment();
-        this.balance = dto.balance();
-        this.stateWeek = dto.stateWeek();
-    }
 
-    public ContractDto toDto() {
-        return new ContractDto(id, nameClient, phoneNumber, payDay, payment, balance, stateWeek);
-    }
 }

@@ -8,11 +8,7 @@ public class ComunicationsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ComunicationsApplication.class, args);
-	
 
-		
-	String n = "";
-	System.out.println(""==n);
 	}
 
 

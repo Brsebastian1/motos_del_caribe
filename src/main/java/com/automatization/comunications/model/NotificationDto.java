@@ -1,5 +1,10 @@
 package com.automatization.comunications.model;
 
-public class NotificationDto {
+import java.time.LocalDate;
 
-}
+public record NotificationDto(
+    String idNotification,
+    String numContract,
+    String nameClient,
+    String phoneNumber,
+    LocalDate dayRemember) {}
