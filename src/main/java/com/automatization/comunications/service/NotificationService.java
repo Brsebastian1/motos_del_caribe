@@ -13,15 +13,27 @@ import com.automatization.comunications.repository.IRepositoryNotification;
 public class NotificationService implements INotificationService {
 
     private IRepositoryNotification repositoryNotification;
+    private IRepositoryContract repositoryContract;
 
-    public NotificationService(IRepositoryNotification repositoryNotification) {
+    public NotificationService(IRepositoryNotification repositoryNotification, IRepositoryContract repositoryContract) {
         this.repositoryNotification = repositoryNotification;
+        this.repositoryContract = repositoryContract;
     }
 
     @Override
     public List<ContractDto> findContractNextTopay() {
-        // TODO Auto-generated method stub
-        return null;
+        List<ContractDto> contracts = repositoryContract.findAll().stream()
+            .map(contract -> new ContractDto(
+                contract.getId(),
+                contract.getNameClient(),
+                contract.getPhoneNumber(),
+                contract.getPayDay(),
+                contract.getPayment(),
+                contract.getBalance(),
+                contract.getStateWeek()
+            ))
+            .toList();
+        return contracts;
     }
 
     @Override
