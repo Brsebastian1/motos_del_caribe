@@ -4,10 +4,11 @@ import java.util.List;
 
 import com.automatization.comunications.model.ContractDto;
 import com.automatization.comunications.model.Notification;
+import com.automatization.comunications.model.NotificationDto;
 
 public interface INotificationService {
     public List<ContractDto> findContractNextTopay();
     public List<Notification> findNotifications(String id);
-    public void saveNotification(Notification notification);
+    public void saveNotification(NotificationDto notificationDto);
     public boolean deleteNotification(String id);
 }

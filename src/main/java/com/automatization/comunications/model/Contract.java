@@ -1,6 +1,8 @@
 package com.automatization.comunications.model;
 
 
+import java.util.Date;
+
 import org.hibernate.annotations.Immutable;
 
 import jakarta.persistence.Column;
@@ -37,9 +39,21 @@ public class Contract {
     
     @Column(name = "cuota")
     private double payment;
+
+    @Column(name = "fecha_semanal")
+    private Date firstPaymentDate;
+
+    @Column(name = "fecha_final_de_pago")
+    private Date lastPaymentDate;
  
     @Column(name = "saldo")
     private double balance;
+
+    @Column(name = "alerta_cierre")
+    private String collector;
+
+    @Column(name = "ruta")
+    private String placeOfPayment;
 
     @Column(name = "estado_semana")
     private String stateWeek;

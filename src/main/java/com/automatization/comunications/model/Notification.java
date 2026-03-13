@@ -2,9 +2,13 @@ package com.automatization.comunications.model;
 
 import java.time.LocalDate;
 
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +23,8 @@ import lombok.Setter;
 public class Notification {
 
     @Id
-    private String idNotification;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idNotification;
 
     private String numContract;
 
@@ -27,6 +32,6 @@ public class Notification {
 
     private String phoneNumber;
     
-    private LocalDate dayRemember;
+    private String dayRemember;
 
 }
