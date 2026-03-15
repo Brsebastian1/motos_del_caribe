@@ -1,5 +1,6 @@
 package com.automatization.comunications.service;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -32,12 +33,13 @@ public class NotificationService implements INotificationService {
     public List<ContractDto> findContractNextTopay() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateNow = LocalDateTime.now();
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
         List<ContractDto> contracts = repositoryContract.findAll().stream()
             .map(contract -> new ContractDto(
                 contract.getId(),
                 contract.getNameClient(),
                 contract.getPhoneNumber(),
-                "Recuerda que tu pago es el día " + contract.getPayDay() + " por un valor de " + contract.getPayment(),
+                "Recuerda que tu pago es el día " + contract.getPayDay() + " por un valor de $" + (decimalFormat.format( contract.getPayment() * 1000)),
                 dateNow.format(formatter)
             ))
             .toList();
